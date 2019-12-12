@@ -19,28 +19,34 @@
         </el-row>
     </div>
     <div class="footer">
-      <div class="num">2项未完成</div>
+      <div class="num">{{list.length}}项未完成</div>
       <div class="footer-item">
-        <div class="text f-border">全部</div>
-        <div class="text">未完成</div>
-        <div class="text">已完成</div>
+        <div class="text" 
+             v-for="(item,index) in finish" :key="index"
+             :class="{active:current==index}"
+             @click="current=index">
+          {{item}}
+        </div>
       </div>
     </div>
   </div>
 </template>
-
+ 
 <script>
 export default {
     data(){
       return{
         name: '',
-        list:[]
+        list:[],
+        finish:["全部","未完成","已完成"],
+        current:0
       }
     },
     methods:{
       change(){
         this.list.push(this.name)
         this.name=""
+        console.log(this.list)
       },
       del(index){
         this.list.splice(index,1)
@@ -81,13 +87,14 @@ export default {
     display: flex;
     .text{
       font-size: 14px;
+        padding:2px 6px;
       color: #ccc;
       margin-right: 20px;
     }
   }
 }
-.f-border{
-  padding:2px 6px;
+.active{
+
   border: 1px solid #efd5d5;
   border-radius: 2px;
 }
