@@ -3,7 +3,7 @@
     <div>
       <h1 class="tittle">云备忘录</h1>
     </div>
-    <div class="inp" @keyup.enter="change">
+    <div class="inp" @keyup.enter="add">
     <el-input v-model="name" placeholder="接下来要做什么？" ></el-input>
     </div>
     <div class="body" v-for="(item,index) in list" :key="index">
@@ -11,21 +11,24 @@
         <span class="body-text">吃饭</span>
         <i class="el-icon-close body-ico"></i> -->
         <el-row justify="start">
-           <el-col :span="2"><input type="checkbox" name="" id=""></el-col>
-           <el-col :span="20"><div>{{item}}</div></el-col>
+           <el-col :span="2"><input type="checkbox" name="" id="" v-model="item.done" @change="changeinp"></el-col>
+           <el-col :span="20"><div :class="{complete:item.done ==true}">{{item.content}}</div></el-col>
            <el-col :span="2">
              <i class="el-icon-close body-ico" @click="del(index)"></i>
            </el-col>
         </el-row>
     </div>
     <div class="footer">
-      <div class="num">{{list.length}}项未完成</div>
+      <div class="num">{{shengyu}}项未完成</div>
       <div class="footer-item">
-        <div class="text" 
-             v-for="(item,index) in finish" :key="index"
-             :class="{active:current==index}"
-             @click="current=index">
-          {{item}}
+        <div class="text">
+          <a href="#all">全部</a>
+        </div>
+        <div class="text">
+          <a href="#show">未完成</a>
+        </div>
+        <div class="text">
+          <a href="#noshow">已完成</a>
         </div>
       </div>
     </div>
@@ -37,19 +40,33 @@ export default {
     data(){
       return{
         name: '',
-        list:[],
-        finish:["全部","未完成","已完成"],
-        current:0
+        list:[{
+          content:"11",
+          done:false
+        }],
       }
     },
     methods:{
-      change(){
-        this.list.push(this.name)
+      add(){
+        this.list.push({
+          content:this.name,
+          done:false
+        })
         this.name=""
         console.log(this.list)
       },
       del(index){
         this.list.splice(index,1)
+      },
+      changeinp(){
+        console.log(this.list)
+      }
+    },
+    computed:{
+      shengyu(){
+        return this.list.filter((res)=>{
+           return !res.done
+        }).length
       }
     }
 }
@@ -97,5 +114,9 @@ export default {
 
   border: 1px solid #efd5d5;
   border-radius: 2px;
+}
+.complete{
+  text-decoration: line-through;
+  color: #ccc;
 }
 </style>
