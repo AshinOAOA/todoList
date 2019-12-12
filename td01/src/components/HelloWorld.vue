@@ -6,10 +6,8 @@
     <div class="inp" @keyup.enter="add">
     <el-input v-model="name" placeholder="接下来要做什么？" ></el-input>
     </div>
-    <div class="body" v-for="(item,index) in list" :key="index">
-       <!-- <input type="checkbox" class="body-inp">
-        <span class="body-text">吃饭</span>
-        <i class="el-icon-close body-ico"></i> -->
+    <Body :List="list"></Body>
+    <!-- <div class="body" v-for="(item,index) in list" :key="index">
         <el-row justify="start">
            <el-col :span="2"><input type="checkbox" name="" id="" v-model="item.done" @change="changeinp"></el-col>
            <el-col :span="20"><div :class="{complete:item.done ==true}">{{item.content}}</div></el-col>
@@ -17,8 +15,8 @@
              <i class="el-icon-close body-ico" @click="del(index)"></i>
            </el-col>
         </el-row>
-    </div>
-    <div class="footer">
+    </div> -->
+    <!-- <div class="footer">
       <div class="num">{{shengyu}}项未完成</div>
       <div class="footer-item">
         <div class="text">
@@ -31,12 +29,20 @@
           <a href="#noshow">已完成</a>
         </div>
       </div>
-    </div>
+    </div> -->
+    <Footer :List="list"></Footer>
   </div>
 </template>
  
 <script>
+ import Body from './body'
+ import Footer from './footer'
+ 
 export default {
+  components:{
+    Body,
+    Footer
+  },
     data(){
       return{
         name: '',
@@ -54,21 +60,21 @@ export default {
         })
         this.name=""
         console.log(this.list)
-      },
-      del(index){
-        this.list.splice(index,1)
-      },
-      changeinp(){
-        console.log(this.list)
       }
+      // del(index){
+      //   this.list.splice(index,1)
+      // },
+      // changeinp(){
+      //   console.log(this.list)
+      // }
     },
-    computed:{
-      shengyu(){
-        return this.list.filter((res)=>{
-           return !res.done
-        }).length
-      }
-    }
+    // computed:{
+    //   shengyu(){
+    //     return this.list.filter((res)=>{
+    //        return !res.done
+    //     }).length
+    //   }
+    // }
 }
 
 </script>
@@ -87,36 +93,36 @@ export default {
     font-weight: 300;
   }
 }
-.body{
-  padding: 10px 0 ;
-  border-bottom: 1px solid #ccc;
-}
-.footer{
-  display: flex;
-  padding: 10px 5px;
-  border-bottom: 1px solid #ccc;
-  .num{
-    font-size:14px;
-    color: #ccc;
-    margin-right: 100px; 
-  }
-  .footer-item{
-    display: flex;
-    .text{
-      font-size: 14px;
-        padding:2px 6px;
-      color: #ccc;
-      margin-right: 20px;
-    }
-  }
-}
-.active{
+// .body{
+//   padding: 10px 0 ;
+//   border-bottom: 1px solid #ccc;
+// }
+// .footer{
+//   display: flex;
+//   padding: 10px 5px;
+//   border-bottom: 1px solid #ccc;
+//   .num{
+//     font-size:14px;
+//     color: #ccc;
+//     margin-right: 100px; 
+//   }
+//   .footer-item{
+//     display: flex;
+//     .text{
+//       font-size: 14px;
+//         padding:2px 6px;
+//       color: #ccc;
+//       margin-right: 20px;
+//     }
+//   }
+// }
+// .active{
 
-  border: 1px solid #efd5d5;
-  border-radius: 2px;
-}
-.complete{
-  text-decoration: line-through;
-  color: #ccc;
-}
+//   border: 1px solid #efd5d5;
+//   border-radius: 2px;
+// }
+// .complete{
+//   text-decoration: line-through;
+//   color: #ccc;
+// }
 </style>
