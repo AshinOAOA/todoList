@@ -3,16 +3,16 @@
     <div>
       <h1 class="tittle">云备忘录</h1>
     </div>
-    <div class="inp">
-    <el-input v-model="input" placeholder="接下来要做什么？"></el-input>
+    <div class="inp" @keyup.enter="change">
+    <el-input v-model="name" placeholder="接下来要做什么？" ></el-input>
     </div>
-    <div class="body">
+    <div class="body" v-for="(item,index) in list" :key="index">
        <!-- <input type="checkbox" class="body-inp">
         <span class="body-text">吃饭</span>
         <i class="el-icon-close body-ico"></i> -->
         <el-row justify="start">
            <el-col :span="2"><input type="checkbox" name="" id=""></el-col>
-           <el-col :span="20"><div>chifan</div></el-col>
+           <el-col :span="20"><div>{{item}}</div></el-col>
            <el-col :span="2"><i class="el-icon-close body-ico"></i></el-col>
         </el-row>
     </div>
@@ -31,8 +31,15 @@
 export default {
     data(){
       return{
-        input: '',
-        radio:'',
+        name: '',
+        list:[]
+      }
+    },
+    methods:{
+      change(){
+        this.list.push(this.name)
+        console.log(111)
+        this.name=""
       }
     }
 }
