@@ -13,7 +13,9 @@
         <el-row justify="start">
            <el-col :span="2"><input type="checkbox" name="" id=""></el-col>
            <el-col :span="20"><div>{{item}}</div></el-col>
-           <el-col :span="2"><i class="el-icon-close body-ico"></i></el-col>
+           <el-col :span="2">
+             <i class="el-icon-close body-ico" @click="del(index)"></i>
+           </el-col>
         </el-row>
     </div>
     <div class="footer">
@@ -38,8 +40,10 @@ export default {
     methods:{
       change(){
         this.list.push(this.name)
-        console.log(111)
         this.name=""
+      },
+      del(index){
+        this.list.splice(index,1)
       }
     }
 }
