@@ -1,18 +1,16 @@
 <template>
   <div>
-    <div
-      class="body"
-      v-for="(item,index) in List"
-      :key="index"
-    >
-      <el-row>
-        <el-col :span="2"><input
+    <div class="body" v-for="(item,index) in List" :key="index" v-show="item.content!=''">
+       <el-row>
+        <el-col :span="2">
+          <el-checkbox v-model="item.done" @change="changeinp"></el-checkbox>
+          <!-- <input
             type="checkbox"
             name=""
             id=""
             v-model="item.done"
-            @change="changeinp"
-          ></el-col>
+            @change="changeinp"> -->
+        </el-col>
         <el-col :span="20">
           <div :class="{complete:item.done ==true}">{{item.content}}</div>
         </el-col>
@@ -24,6 +22,7 @@
         </el-col>
       </el-row>
       <span class="time">{{item.creat_at}}</span>
+
     </div>
   </div>
 

@@ -39,7 +39,7 @@ export default {
       name: "",
       list: [
         {
-          content: "11",
+          content: "",
           done: false,
           creat_at:""
         }

@@ -1,16 +1,17 @@
 <template>
   <div>
     <div class="footer">
-      <div class="num">{{shengyu}}项未完成</div>
+       <!-- TODO  无法设置v-if -->
+      <div class="num">{{shengyu-1}}项未完成</div>
       <div class="footer-item">
         <div class="text">
-          <el-button type="text" @click="this.query.type = type.all">全部</el-button>
+          <el-button size="mini" @click="this.query.type = type.all">全部</el-button>
         </div>
         <div class="text">
-          <el-button type="text"  @click="this.query.type = type.unFinish">未完成</el-button>
+          <el-button size="mini" @click="this.query.type = type.unFinish">未完成</el-button>
         </div>
         <div class="text">
-          <el-button type="text"  @click="this.query.type = type.finish">已完成</el-button>
+          <el-button size="mini"  @click="this.query.type = type.finish">已完成</el-button>
         </div>
       </div>
     </div>
@@ -57,14 +58,15 @@ export default {
     font-size: 14px;
     color: #ccc;
     margin-right: 100px;
-    line-height: 39px;
+    line-height: 49px;
   }
   .footer-item {
     display: flex;
     .text {
       font-size: 14px;
       color: #ccc;
-      margin-right: 20px;
+      margin-right: 10px;
+      padding: 10px 0;
     }
   }
 }
