@@ -51,12 +51,27 @@ export default {
   },
   methods: {
     add() {
-      // TODO：时间格式没弄好
       var nowtime = new Date()
+      var nian = nowtime.getFullYear()
+      var yue = nowtime.getMonth()
+      var ri = nowtime.getDate()
+      var shi = nowtime.getHours()
+      var fen = nowtime.getMinutes()
+      var miao = nowtime.getSeconds()
+      if(miao<10){
+        miao = "0"+miao
+      }
+      if(shi<10){
+        shi = "0"+shi
+      }
+      if(fen<10){
+        fen = "0"+fen
+      }
+      var formatTime = nian+"-"+yue+"-"+ri +" " + shi+":"+fen+":"+miao
       this.list.push({
         content: this.name,
         done: false,
-        creat_at:nowtime
+        creat_at:formatTime
       });
       this.name = "";
       console.log(this.list);

@@ -23,7 +23,7 @@
           ></i>
         </el-col>
       </el-row>
-      <span>{{item.creat_at}}</span>
+      <span class="time">{{item.creat_at}}</span>
     </div>
   </div>
 
@@ -72,6 +72,10 @@ export default {
 }
 .complete {
   text-decoration: line-through;
+  color: #ccc;
+}
+.time{
+  font-size: 12px;
   color: #ccc;
 }
 </style>
