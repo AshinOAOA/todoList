@@ -83,9 +83,9 @@ export default {
       if(this.query.type ===type.all){
         return this.list 
       }else if(this.query.type ===type.finish){
-        return this.list.filter(v=>!v.done)
+        return this.list.filter(v=>v.done)
       }else if(this.query.type === type.unFinish){
-        return this.list.filter(v => v.done)
+        return this.list.filter(v => !v.done)
       }
       return this.list
     }

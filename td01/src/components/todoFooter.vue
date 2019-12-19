@@ -5,13 +5,13 @@
       <div class="num">{{shengyu-1}}项未完成</div>
       <div class="footer-item">
         <div class="text">
-          <el-button size="mini" @click="this.query.type = type.all">全部</el-button>
+          <el-button size="mini" @click="query.type = type.all">全部</el-button>
         </div>
         <div class="text">
-          <el-button size="mini" @click="this.query.type = type.unFinish">未完成</el-button>
+          <el-button size="mini" @click="query.type = type.unFinish">未完成</el-button>
         </div>
         <div class="text">
-          <el-button size="mini"  @click="this.query.type = type.finish">已完成</el-button>
+          <el-button size="mini"  @click="query.type = type.finish">已完成</el-button>
         </div>
       </div>
     </div>
