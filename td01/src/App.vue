@@ -1,30 +1,30 @@
 <template>
   <div id="app">
-    <Hellowworld></Hellowworld>
+    <TodoHeader></TodoHeader>
 
   </div>
 </template>
 
 <script>
-  import Hellowworld from "./components/HelloWorld"
+import TodoHeader from "./components/todoHeader";
 export default {
-  name:'app',
-  components:{
-    Hellowworld
+  name: "app",
+  components: {
+    TodoHeader
   }
-}
+};
 </script>
 
 <style lang="less">
-  #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
 }
-  a{
-text-decoration:none;
-color:#ccc;
+a {
+  text-decoration: none;
+  color: #ccc;
 }
 </style>
